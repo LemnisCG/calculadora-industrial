@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Usamos la diferencia de diámetros DIRECTA, sin dividir entre 2.
         const diferencia = B - A;
         
-        const radianes = Math.atan(diferencia / C);
+        const radianes = Math.atan(diferencia / 2 * C);
         const grados = radianes * (180 / Math.PI);
         
         return grados.toFixed(2);
