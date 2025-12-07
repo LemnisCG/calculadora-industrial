@@ -1,0 +1,216 @@
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+
+.main-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+.paginas {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+}
+button:hover { background: #ddd; }
+#calculadora {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+/* --- WRAPPER DE LA IMAGEN --- */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: #fff;
+    user-select: none; 
+}
+
+.base-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* --- ESTILOS COMUNES DE LOS MARCADORES --- */
+.marker {
+    position: absolute;
+    font-size: clamp(12px, 2.5vw, 18px);
+    padding: 1em 1.5em; 
+    background-color: #e0aaff;
+    border: 2px solid #7b2cbf;
+    border-radius: 0.4em;
+    color: #3c096c;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transform-origin: center center;
+}
+
+.marker input {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    text-align: center;
+    pointer-events: none;
+    width: 4rem;
+}
+
+/* --- PANEL DE CONTROL --- */
+.controls-panel {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.controls-panel h2 { margin-bottom: 0.5rem; }
+.controls-panel p { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input[type="number"] {
+    width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;
+}
+#btnAplicar {
+    width: 100%; padding: 12px; background: #3a86ff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.2s;
+}
+#btnAplicar:hover { background: #2667d4; }
+
+
+/* =========================================
+   COORDENADAS POR VISTA
+   ========================================= */
+
+/* 1. VISTA RADIO (Tus coordenadas originales) */
+.view-radio #markerA {
+    left: 39.67%;
+    top: 32.61%;
+    transform: translate(-50%, -50%) rotate(-136deg);
+}
+
+.view-radio #markerB {
+    left: 58.66%;
+    top: 54.26%;
+    transform: translate(-50%, -50%) rotate(-43deg);
+}
+
+/* 2. VISTA CUERDA (NUEVAS COORDENADAS) */
+/* Ajusta estos valores left/top/rotate para que coincidan con tu imagen cuerda.jpeg */
+
+.view-cuerda #markerA {
+    left: 29%;  /* <--- AJUSTAR */
+    top: 65%;   /* <--- AJUSTAR */
+    transform: translate(-50%, -50%) rotate(0deg); /* <--- AJUSTAR */
+    background-color: #ffd6a5; /* Color diferente opcional para diferenciar */
+    border-color: #e67e22;
+    color: #d35400;
+}
+
+.view-cuerda #markerB {
+    left: 88%;  /* <--- AJUSTAR */
+    top: 22.3%;   /* <--- AJUSTAR */
+    transform: translate(-50%, -50%) rotate(60deg); /* <--- AJUSTAR */
+    background-color: #ffd6a5;
+    border-color: #e67e22;
+    color: #d35400;
+}
+
+/* ... (Tus estilos anteriores se mantienen igual) ... */
+
+/* =========================================
+   3. VISTA REDUCCIÓN CÉNTRICA
+   ========================================= */
+
+.view-centrica .marker {
+    /* Colores */
+    background-color: #d69ade;
+    border: 1.5px solid #6c3483;
+    color: #000;
+    
+    /* TAMAÑO MÍNIMO (Súper ajustado) */
+    height: 20px;              /* Altura mínima */
+    min-width: 18px;           /* Ancho mínimo (solo para 1 letra) */
+    width: fit-content;        /* IMPORTANTE: Se ajusta al contenido real */
+    
+    border-radius: 4px;
+    padding: 0 1px;            /* Casi sin relleno */
+    
+    /* Texto */
+    font-size: 0.75rem;        /* Letra pequeña */
+    font-family: sans-serif;
+    height: 3.8rem;
+    /* Alineación */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+.view-centrica .marker input {
+    font-weight: bold;
+    font-size: 0.75rem; 
+    width: 2.7rem;
+    
+    /* Esto permite que el input sea tan estrecho como la caja */
+    min-width: 10px; 
+    
+    text-align: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: default;
+    line-height: 1;
+}
+
+/* POSICIONES (Ajustar si es necesario) */
+.view-centrica #markerA {
+    left: 5%;  
+    top: 62%;
+    transform: translate(-50%, -50%);
+}
+
+.view-centrica #markerB {
+    left: 83%;
+    top: 63%;
+    transform: translate(-50%, -50%);
+}
+
+.view-centrica #markerC {
+    width: 3rem;
+    height: 2.5rem;
+    left: 46.5%;
+    top: 19%;
+    transform: translate(-50%, -50%);
+}
+
+.view-centrica #markerBeta {
+    width: 4rem;
+    height: 3rem;
+    left: 93%;
+    top: 23%;
+    transform: translate(-50%, -50%);
+}
