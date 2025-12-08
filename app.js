@@ -29,11 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!B || !A || !C) return 0;
         
-        // Fórmula de la foto: tan-1( (B - A) / C )
+        // Fórmula de la foto: tan-1( (B - A) / 2C )
         // Usamos la diferencia de diámetros DIRECTA, sin dividir entre 2.
         const diferencia = B - A;
-        
-        const radianes = Math.atan(diferencia / 2 * C);
+        const numerador = diferencia
+        const denominador = 2 * C
+        const radianes = Math.atan(numerador / denominador);
         const grados = radianes * (180 / Math.PI);
         
         return grados.toFixed(2);
